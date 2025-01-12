@@ -1,0 +1,28 @@
+# schema: https://scanner.dev/schema/scanner-detection-rule.v1.json
+name: GitHub OAuth application access restrictions disabled
+description: |-
+  ## Goal
+  Detect when GitHub OAuth application access restrictions have been disabled.
+
+  ## Strategy
+  This rule monitors GitHub audit logs for instances when OAuth application access restrictions are disabled. Organizations can control which OAuth applications access their repositories and resources by enabling these restrictions. Unauthorized access could allow a third-party application to maintain unfettered access to a GitHub environment.
+
+  ## Triage and Response
+  1. Determine if the change made by the actor is authorized.
+  2. If the change was unauthorized or unexpected, initiate the organization's incident response process and investigate.
+enabled: true
+severity: Medium
+query_text: |-
+  %ingest.source_type:(github-telemetry github.audit.streaming)
+  action:org.disable_oauth_app_restrictions
+  | groupbycount(actor)
+  | where @q.count > 0
+time_range_s: 300
+run_frequency_s: 60
+event_sink_keys:
+- medium_severity_alerts
+tags:
+- source.github-telemetry
+- techniques.t1089.disabling_security_tools
+- source.github
+- tactics.ta0005.defense_evasion

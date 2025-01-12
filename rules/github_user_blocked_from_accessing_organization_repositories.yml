@@ -1,0 +1,26 @@
+# schema: https://scanner.dev/schema/scanner-detection-rule.v1.json
+name: GitHub user blocked from accessing organization repositories
+description: |-
+  ## Goal
+  Detect when a GitHub user is blocked from accessing organization repositories.
+
+  ## Strategy
+  This rule monitors GitHub audit logs for instances where a user is blocked from accessing organization repositories. Organization owners and moderators can block non-members from collaborating.
+
+  ## Triage and response
+  1. Determine if the change made by the actor is authorized.
+  2. If the change was unauthorized or unexpected, initiate your organization's incident response process and investigate.
+enabled: true
+severity: Low
+query_text: |-
+  %ingest.source_type:(github-telemetry github.audit.streaming)
+  action:org.block_user
+  | groupbycount(actor)
+  | where @q.count > 0
+time_range_s: 300
+run_frequency_s: 60
+event_sink_keys:
+- low_severity_alerts
+tags:
+- source.github-telemetry
+- source.github
