@@ -23,6 +23,6 @@ event_sink_keys:
 - low_severity_alerts
 tags:
 - source.github-telemetry
-- techniques.t1089.disabling_security_tools
+- techniques.t1562.impair_defenses
 - source.github
 - tactics.ta0005.defense_evasion
