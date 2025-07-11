@@ -16,7 +16,7 @@ description: |-
 enabled: true
 severity: Medium
 query_text: |-
-  %ingest.source_type:(github-telemetry github.audit.streaming)
+  %ingest.source_type:github
   action:(auto_approve_personal_access_token_requests.disable auto_approve_personal_access_token_requests.enable forbid_auto_approve_personal_access_token_requests.disable forbid_auto_approve_personal_access_token_requests.enable)
   | groupbycount(actor)
   | where @q.count > 0
