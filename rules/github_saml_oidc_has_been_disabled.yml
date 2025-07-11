@@ -16,7 +16,7 @@ description: |-
 enabled: true
 severity: High
 query_text: |-
-  %ingest.source_type:(github-telemetry github.audit.streaming)
+  %ingest.source_type:github
   action:(business.disable_saml org.disable_saml business.disable_oidc)
   | groupbycount(actor)
   | where @q.count > 0
