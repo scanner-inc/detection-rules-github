@@ -13,7 +13,7 @@ description: |-
 enabled: true
 severity: High
 query_text: |-
-  %ingest.source_type:(github-telemetry github.audit.streaming)
+  %ingest.source_type:github
   action:(org.disable_two_factor_requirement business.disable_two_factor_requirement)
   | groupbycount(actor)
   | where @q.count > 0
