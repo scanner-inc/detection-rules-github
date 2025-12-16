@@ -22,7 +22,7 @@ description: |-
 enabled: true
 severity: High
 query_text: |-
-  %ingest.source_type:github
+  @scnr.source_type:github
   action:business.add_admin
   | groupbycount(actor)
   | where @q.count > 0

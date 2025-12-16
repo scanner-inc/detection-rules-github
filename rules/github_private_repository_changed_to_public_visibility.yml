@@ -16,7 +16,7 @@ description: |-
 enabled: true
 severity: High
 query_text: |-
-  %ingest.source_type:github
+  @scnr.source_type:github
   action:repo.access
   previous_visibility:private
   visibility:public

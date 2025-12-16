@@ -16,7 +16,7 @@ description: |-
 enabled: true
 severity: Medium
 query_text: |-
-  %ingest.source_type:github
+  @scnr.source_type:github
   action:git.clone
   (not repository_public:true)
   (not actor:*)

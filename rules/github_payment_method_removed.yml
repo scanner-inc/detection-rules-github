@@ -13,7 +13,7 @@ description: |-
 enabled: true
 severity: Informational
 query_text: |-
-  %ingest.source_type:github
+  @scnr.source_type:github
   action:payment_method.remove
   | groupbycount(actor)
   | where @q.count > 0
