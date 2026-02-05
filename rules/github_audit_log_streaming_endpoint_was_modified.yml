@@ -13,7 +13,6 @@ description: |-
 
   1. Determine if the change made by the actor is authorized.
   2. If the change was not authorized or was unexpected, initiate the organization's incident response process and conduct an investigation.
-enabled: true
 severity: Medium
 query_text: |-
   @scnr.source_type:github

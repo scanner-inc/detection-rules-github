@@ -10,7 +10,6 @@ description: |-
   ## Triage and response
   1. Determine if the change made by the actor is authorized.
   2. If the change was unauthorized or unexpected, initiate the incident response process and investigate.
-enabled: true
 severity: High
 query_text: |-
   @scnr.source_type:github

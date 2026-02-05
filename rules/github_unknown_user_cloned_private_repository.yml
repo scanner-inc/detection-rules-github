@@ -13,7 +13,6 @@ description: |-
 
   1. Check if the IP address associated with the clone action belongs to a known corporate device.
   2. If the action cannot be traced back to an internal user, initiate your organization's incident response process and conduct an investigation.
-enabled: true
 severity: Medium
 query_text: |-
   @scnr.source_type:github
